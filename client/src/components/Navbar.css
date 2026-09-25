@@ -1,0 +1,652 @@
+/* =========================================================
+   CITYPULSE NAVBAR
+   Premium Civic Intelligence Navigation
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT NAVBAR
+   ========================================================= */
+
+.city-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d41472 0%,
+      #b026bc 45%,
+      #7141d8 72%,
+      #4f46d8 100%
+    );
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    0 8px 30px rgba(30, 10, 70, 0.22);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   INNER CONTAINER
+   ========================================================= */
+
+.city-navbar-inner {
+  width: 100%;
+  max-width: 1500px;
+
+  min-height: 76px;
+
+  margin: 0 auto;
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 34px;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.city-brand {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 215px;
+
+  color: #ffffff !important;
+
+  text-decoration: none !important;
+
+  cursor: pointer;
+}
+
+
+/* Brand icon */
+
+.city-brand-icon {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  color: #ffffff;
+
+  background:
+    rgba(255, 255, 255, 0.14);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+
+.city-brand:hover .city-brand-icon {
+  transform: translateY(-1px);
+
+  background:
+    rgba(255, 255, 255, 0.2);
+}
+
+
+/* Brand text */
+
+.city-brand-text {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.05;
+}
+
+
+/* Brand name */
+
+.city-brand-name {
+  display: block;
+
+  color: #ffffff !important;
+
+  font-size: 19px;
+  font-weight: 800;
+
+  letter-spacing: -0.03em;
+
+  text-decoration: none !important;
+}
+
+
+/* Brand subtitle */
+
+.city-brand-subtitle {
+  display: block;
+
+  margin-top: 5px;
+
+  color:
+    rgba(255, 255, 255, 0.68) !important;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  text-decoration: none !important;
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+   ========================================================= */
+
+.city-desktop-nav {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+}
+
+
+/* =========================================================
+   NAV LINK
+   ========================================================= */
+
+.city-nav-link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  height: 42px;
+
+  padding: 0 14px;
+
+  border-radius: 10px;
+
+  color:
+    rgba(255, 255, 255, 0.78) !important;
+
+  background: transparent;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  text-decoration: none !important;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+/* Remove browser link states */
+
+.city-nav-link:link,
+.city-nav-link:visited {
+  color:
+    rgba(255, 255, 255, 0.78) !important;
+
+  text-decoration: none !important;
+}
+
+
+/* Hover */
+
+.city-nav-link:hover {
+  color: #ffffff !important;
+
+  background:
+    rgba(255, 255, 255, 0.11);
+
+  transform:
+    translateY(-1px);
+
+  text-decoration: none !important;
+}
+
+
+/* =========================================================
+   ACTIVE NAV ITEM
+   ========================================================= */
+
+.city-nav-link-active {
+  color: #ffffff !important;
+
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    0 4px 15px rgba(30, 10, 70, 0.1);
+}
+
+
+/* Active underline */
+
+.city-nav-link-active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 14px;
+  right: 14px;
+
+  bottom: 4px;
+
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   LIVE STATUS
+   ========================================================= */
+
+.city-navbar-status {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-height: 34px;
+
+  padding:
+    0 13px;
+
+  border-radius: 999px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.2);
+
+  background:
+    rgba(255, 255, 255, 0.09);
+
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+
+  white-space: nowrap;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+
+/* Live dot */
+
+.city-status-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #86efac;
+
+  box-shadow:
+    0 0 0 3px rgba(134, 239, 172, 0.12),
+    0 0 12px rgba(134, 239, 172, 0.8);
+
+  animation:
+    cityLivePulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+   ========================================================= */
+
+.city-mobile-button {
+  display: none;
+
+  margin-left: auto;
+
+  width: 40px;
+  height: 40px;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.22);
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+
+.city-mobile-button:hover {
+  background:
+    rgba(255, 255, 255, 0.17);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+
+.city-mobile-nav {
+  display: none;
+}
+
+
+/* =========================================================
+   MOBILE STATUS
+   ========================================================= */
+
+.city-mobile-status {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 8px;
+  padding: 12px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  color:
+    rgba(255, 255, 255, 0.7);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes cityLivePulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+
+    transform:
+      scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.1);
+  }
+}
+
+
+/* =========================================================
+   LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .city-navbar-inner {
+    padding: 0 24px;
+
+    gap: 20px;
+  }
+
+  .city-brand {
+    min-width: 190px;
+  }
+
+  .city-nav-link {
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .city-desktop-nav {
+    gap: 3px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .city-navbar-inner {
+    padding: 0 20px;
+
+    gap: 16px;
+  }
+
+  .city-brand {
+    min-width: auto;
+  }
+
+  .city-brand-subtitle {
+    display: none;
+  }
+
+  .city-nav-link {
+    padding: 0 8px;
+
+    font-size: 12px;
+  }
+
+  .city-nav-link svg {
+    display: none;
+  }
+
+  .city-navbar-status {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .city-navbar-inner {
+    min-height: 66px;
+
+    padding:
+      0 16px;
+  }
+
+
+  /* Brand */
+
+  .city-brand {
+    min-width: auto;
+  }
+
+  .city-brand-name {
+    font-size: 18px;
+  }
+
+
+  /* Hide desktop */
+
+  .city-desktop-nav {
+    display: none;
+  }
+
+  .city-navbar-status {
+    display: none;
+  }
+
+
+  /* Mobile button */
+
+  .city-mobile-button {
+    display: flex;
+  }
+
+
+  /* Mobile navigation */
+
+  .city-mobile-nav {
+    display: flex;
+
+    flex-direction: column;
+
+    padding:
+      10px 16px 16px;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.1);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(151, 16, 102, 0.98),
+        rgba(91, 33, 182, 0.98),
+        rgba(37, 60, 180, 0.98)
+      );
+
+    box-shadow:
+      0 15px 30px rgba(20, 10, 70, 0.2);
+
+    backdrop-filter:
+      blur(20px);
+
+    -webkit-backdrop-filter:
+      blur(20px);
+  }
+
+
+  /* Mobile links */
+
+  .city-mobile-link {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+      13px 12px;
+
+    border-radius: 10px;
+
+    color:
+      rgba(255, 255, 255, 0.76) !important;
+
+    background: transparent;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none !important;
+
+    transition:
+      color 180ms ease,
+      background 180ms ease;
+  }
+
+
+  .city-mobile-link:link,
+  .city-mobile-link:visited {
+    color:
+      rgba(255, 255, 255, 0.76) !important;
+
+    text-decoration: none !important;
+  }
+
+
+  .city-mobile-link:hover {
+    color: #ffffff !important;
+
+    background:
+      rgba(255, 255, 255, 0.1);
+
+    text-decoration: none !important;
+  }
+
+
+  /* Active mobile link */
+
+  .city-mobile-link-active {
+    color: #ffffff !important;
+
+    background:
+      rgba(255, 255, 255, 0.13);
+
+    box-shadow:
+      inset 3px 0 0 #ffffff;
+  }
+}

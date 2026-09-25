@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   CITYPULSE — PREMIUM VISUAL SYSTEM
+   Step 2: Animated Background
+   ========================================================= */
+
+:root {
+  --pink: #ec008c;
+  --magenta: #c026d3;
+  --purple: #7c3aed;
+  --violet: #5b21b6;
+  --blue: #2563eb;
+  --deep-blue: #172554;
+}
+
+/* ---------------------------------------------------------
+   RESET
+   --------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #32105f;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family: "Inter", sans-serif;
+
+  color: white;
+
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(236, 0, 140, 0.55),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 38% 20%,
+      rgba(192, 38, 211, 0.38),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 72% 12%,
+      rgba(124, 58, 237, 0.48),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 100% 48%,
+      rgba(37, 99, 235, 0.55),
+      transparent 40%
+    ),
+    linear-gradient(
+      115deg,
+      #8e0b73 0%,
+      #c026d3 22%,
+      #7c3aed 48%,
+      #3730a3 72%,
+      #164e9a 100%
+    );
+
+  background-size:
+    180% 180%,
+    170% 170%,
+    180% 180%,
+    180% 180%,
+    200% 200%;
+
+  animation: cityPulseGradient 18s ease-in-out infinite alternate;
+}
+
+/* ---------------------------------------------------------
+   MAIN PAGE ATMOSPHERE
+   --------------------------------------------------------- */
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: -10;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 18% 32%,
+      rgba(255, 0, 153, 0.28) 0,
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 52% 12%,
+      rgba(255, 255, 255, 0.08) 0,
+      transparent 16%
+    ),
+    radial-gradient(
+      circle at 78% 42%,
+      rgba(88, 166, 255, 0.22) 0,
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 35% 85%,
+      rgba(236, 0, 140, 0.18) 0,
+      transparent 24%
+    );
+
+  filter: blur(30px);
+
+  animation: ambientMove 16s ease-in-out infinite alternate;
+}
+
+/* ---------------------------------------------------------
+   NETWORK / DIGITAL GRID
+   --------------------------------------------------------- */
+
+body::after {
+  content: "";
+
+  position: fixed;
+  inset: -20%;
+
+  z-index: -9;
+
+  pointer-events: none;
+
+  opacity: 0.22;
+
+  background:
+    linear-gradient(
+      25deg,
+      transparent 48%,
+      rgba(117, 214, 255, 0.32) 49%,
+      transparent 50%
+    ),
+    linear-gradient(
+      145deg,
+      transparent 48%,
+      rgba(255, 255, 255, 0.16) 49%,
+      transparent 50%
+    ),
+    linear-gradient(
+      70deg,
+      transparent 48%,
+      rgba(113, 195, 255, 0.2) 49%,
+      transparent 50%
+    );
+
+  background-size:
+    460px 360px,
+    520px 420px,
+    620px 500px;
+
+  animation: networkMove 30s linear infinite;
+}
+
+/* ---------------------------------------------------------
+   APP ROOT
+   --------------------------------------------------------- */
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+/* ---------------------------------------------------------
+   SUBTLE LIGHT ORBS
+   --------------------------------------------------------- */
+
+#root::before,
+#root::after {
+  content: "";
+
+  position: fixed;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 999px;
+
+  pointer-events: none;
+
+  z-index: -5;
+
+  background: rgba(148, 235, 255, 0.95);
+
+  box-shadow:
+    0 0 8px rgba(148, 235, 255, 0.95),
+    0 0 25px rgba(59, 189, 255, 0.8),
+    0 0 55px rgba(59, 189, 255, 0.45);
+
+  animation: floatingPoint 9s ease-in-out infinite;
+}
+
+#root::before {
+  top: 25%;
+  left: 47%;
+}
+
+#root::after {
+  top: 63%;
+  left: 78%;
+
+  width: 5px;
+  height: 5px;
+
+  animation-delay: -4s;
+}
+
+/* ---------------------------------------------------------
+   SELECTION
+   --------------------------------------------------------- */
+
+::selection {
+  color: white;
+  background: rgba(236, 0, 140, 0.65);
+}
+
+/* ---------------------------------------------------------
+   SCROLLBAR
+   --------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(20, 10, 50, 0.35);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background: linear-gradient(
+    180deg,
+    #ec008c,
+    #7c3aed,
+    #2563eb
+  );
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #ff2ca3,
+    #9333ea,
+    #3b82f6
+  );
+}
+
+/* ---------------------------------------------------------
+   COMMON PREMIUM GLASS UTILITY
+   We'll use this later for cards.
+   --------------------------------------------------------- */
+
+.city-glass {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.045)
+    );
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 60px rgba(20, 5, 60, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ---------------------------------------------------------
+   ANIMATIONS
+   --------------------------------------------------------- */
+
+@keyframes cityPulseGradient {
+  0% {
+    background-position:
+      0% 50%,
+      20% 30%,
+      60% 20%,
+      100% 50%,
+      0% 50%;
+  }
+
+  50% {
+    background-position:
+      30% 40%,
+      60% 50%,
+      40% 70%,
+      80% 40%,
+      50% 50%;
+  }
+
+  100% {
+    background-position:
+      70% 60%,
+      90% 40%,
+      20% 30%,
+      20% 70%,
+      100% 50%;
+  }
+}
+
+@keyframes ambientMove {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(2%, 2%, 0) scale(1.04);
+  }
+
+  100% {
+    transform: translate3d(-1%, 3%, 0) scale(1.08);
+  }
+}
+
+@keyframes networkMove {
+  0% {
+    transform: translate3d(-2%, -2%, 0);
+  }
+
+  50% {
+    transform: translate3d(2%, 1%, 0);
+  }
+
+  100% {
+    transform: translate3d(-1%, 3%, 0);
+  }
+}
+
+@keyframes floatingPoint {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+
+  25% {
+    transform: translate3d(35px, -20px, 0);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translate3d(-15px, 30px, 0);
+    opacity: 0.5;
+  }
+
+  75% {
+    transform: translate3d(25px, 15px, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+}
+
+/* ---------------------------------------------------------
+   REDUCE MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  body::before,
+  body::after,
+  #root::before,
+  #root::after {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  body {
+    background-size:
+      220% 220%,
+      210% 210%,
+      220% 220%,
+      220% 220%,
+      250% 250%;
+  }
+
+  body::after {
+    opacity: 0.14;
+  }
+}

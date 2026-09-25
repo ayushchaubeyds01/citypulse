@@ -1,0 +1,1641 @@
+/* =========================================================
+   CITYPULSE — ALERTS PAGE
+   Premium Smart-City / Command-Center UI
+   ========================================================= */
+
+.alerts-page {
+  min-height: calc(100vh - 72px);
+  padding: 42px 24px 70px;
+  color: #f8fafc;
+  position: relative;
+}
+
+.alerts-container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.alerts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 26px;
+}
+
+.alerts-header-content {
+  max-width: 760px;
+}
+
+.alerts-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+
+  color: #67e8f9;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.alerts-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.9);
+  animation: alertPulse 1.8s infinite;
+}
+
+.alerts-header h1 {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05;
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+}
+
+.alerts-header p {
+  margin: 13px 0 0;
+  max-width: 690px;
+  color: rgba(226, 232, 240, 0.72);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   REFRESH BUTTON
+   ========================================================= */
+
+.alerts-refresh-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-width: 108px;
+  padding: 11px 17px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.07);
+  color: #f8fafc;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.alerts-refresh-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.alerts-refresh-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   SYSTEM STATUS
+   ========================================================= */
+
+.alerts-system-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  min-height: 70px;
+  padding: 13px 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.42),
+      rgba(30, 41, 59, 0.25)
+    );
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  margin-bottom: 20px;
+}
+
+.alerts-system-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.alerts-system-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+
+  color: #67e8f9;
+}
+
+.alerts-system-left span {
+  display: block;
+
+  color: rgba(148, 163, 184, 0.8);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.alerts-system-left strong {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 3px;
+
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.alerts-system-left strong i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: #34d399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
+}
+
+.alerts-system-time {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: rgba(148, 163, 184, 0.75);
+  font-size: 12px;
+}
+
+/* =========================================================
+   SUMMARY GRID
+   ========================================================= */
+
+.alerts-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.alert-summary-card {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 150px;
+  padding: 19px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+
+  background: rgba(15, 23, 42, 0.36);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 15px 40px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease;
+}
+
+.alert-summary-card::after {
+  content: "";
+
+  position: absolute;
+  width: 100px;
+  height: 100px;
+
+  right: -45px;
+  bottom: -55px;
+
+  border-radius: 50%;
+
+  background: rgba(34, 211, 238, 0.08);
+  filter: blur(12px);
+
+  pointer-events: none;
+}
+
+.alert-summary-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(15, 23, 42, 0.46);
+}
+
+.alert-summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.alert-summary-top > span {
+  color: rgba(203, 213, 225, 0.72);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.alert-summary-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+}
+
+.alert-icon-blue {
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.alert-icon-orange {
+  color: #fb923c;
+  background: rgba(249, 115, 22, 0.12);
+}
+
+.alert-icon-red {
+  color: #fb7185;
+  background: rgba(244, 63, 94, 0.12);
+}
+
+.alert-icon-yellow {
+  color: #facc15;
+  background: rgba(234, 179, 8, 0.12);
+}
+
+.alert-summary-card > strong {
+  display: block;
+
+  margin-top: 18px;
+
+  color: #ffffff;
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: -0.03em;
+}
+
+.alert-summary-card > small {
+  display: block;
+  margin-top: 9px;
+
+  color: rgba(148, 163, 184, 0.7);
+  font-size: 11px;
+}
+
+/* =========================================================
+   ALERT PANEL
+   ========================================================= */
+
+.alerts-panel {
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 20px;
+
+  background: rgba(15, 23, 42, 0.34);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   PANEL HEADER
+   ========================================================= */
+
+.alerts-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 24px 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.alerts-section-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #67e8f9;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+}
+
+.alerts-panel-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.alerts-panel-header p {
+  margin: 5px 0 0;
+
+  color: rgba(148, 163, 184, 0.72);
+  font-size: 12px;
+}
+
+.alerts-count {
+  padding: 7px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: rgba(226, 232, 240, 0.75);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.alerts-filters {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 11px 18px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  background: rgba(2, 6, 23, 0.12);
+}
+
+.alerts-filters button {
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  padding: 8px 13px;
+
+  background: transparent;
+  color: rgba(148, 163, 184, 0.78);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.alerts-filters button:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.alerts-filters .alerts-filter-active {
+  color: #ffffff;
+  background: rgba(99, 102, 241, 0.24);
+  border-color: rgba(129, 140, 248, 0.25);
+}
+
+/* =========================================================
+   ALERT LIST
+   ========================================================= */
+
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   ALERT ITEM
+   ========================================================= */
+
+.alert-item {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 15px;
+  align-items: center;
+
+  padding: 19px 22px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+
+  transition:
+    background 0.2s ease,
+    padding-left 0.2s ease;
+}
+
+.alert-item:last-child {
+  border-bottom: none;
+}
+
+.alert-item:hover {
+  background: rgba(255, 255, 255, 0.035);
+  padding-left: 25px;
+}
+
+/* =========================================================
+   CRITICAL ALERT
+   ========================================================= */
+
+.alert-item-critical {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(127, 29, 29, 0.17),
+      rgba(127, 29, 29, 0.035)
+    );
+}
+
+.alert-item-critical::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+
+  width: 3px;
+
+  border-radius: 0 4px 4px 0;
+
+  background: #fb7185;
+  box-shadow: 0 0 14px rgba(251, 113, 133, 0.55);
+}
+
+/* =========================================================
+   ALERT ICON
+   ========================================================= */
+
+.alert-item-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  color: #facc15;
+
+  background: rgba(234, 179, 8, 0.09);
+  border: 1px solid rgba(234, 179, 8, 0.15);
+}
+
+.alert-item-critical .alert-item-icon {
+  color: #fb7185;
+
+  background: rgba(244, 63, 94, 0.1);
+  border-color: rgba(244, 63, 94, 0.18);
+
+  animation: criticalIconPulse 1.7s infinite;
+}
+
+/* =========================================================
+   ALERT CONTENT
+   ========================================================= */
+
+.alert-item-main {
+  min-width: 0;
+}
+
+.alert-item-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.alert-item-title-row h3 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 800;
+}
+
+.alert-item-description {
+  margin: 5px 0 9px;
+
+  color: rgba(148, 163, 184, 0.76);
+
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   SEVERITY
+   ========================================================= */
+
+.alert-severity {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.alert-severity-critical {
+  color: #fecdd3;
+  background: rgba(225, 29, 72, 0.2);
+  border: 1px solid rgba(244, 63, 94, 0.24);
+}
+
+.alert-severity-high {
+  color: #fed7aa;
+  background: rgba(249, 115, 22, 0.16);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.alert-severity-medium {
+  color: #fde68a;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.alert-severity-normal {
+  color: #bae6fd;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(14, 165, 233, 0.18);
+}
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.alert-item-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  color: rgba(100, 116, 139, 0.9);
+
+  font-size: 10px;
+}
+
+.alert-item-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.alert-source {
+  padding: 3px 7px;
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: rgba(148, 163, 184, 0.75);
+
+  text-transform: capitalize;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.alert-item-status {
+  min-width: 72px;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alert-active,
+.alert-resolved {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.alert-active {
+  color: #facc15;
+}
+
+.alert-active i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #facc15;
+  box-shadow: 0 0 8px rgba(250, 204, 21, 0.8);
+
+  animation: alertPulse 1.5s infinite;
+}
+
+.alert-resolved {
+  color: #34d399;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.alerts-empty {
+  padding: 65px 20px;
+  text-align: center;
+}
+
+.alerts-empty-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 14px;
+
+  border-radius: 15px;
+
+  color: #34d399;
+
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.16);
+}
+
+.alerts-empty h3 {
+  margin: 0;
+
+  color: #f8fafc;
+  font-size: 15px;
+}
+
+.alerts-empty p {
+  margin: 7px 0 0;
+
+  color: rgba(148, 163, 184, 0.7);
+  font-size: 12px;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.alerts-error {
+  max-width: 500px;
+  margin: 80px auto;
+
+  padding: 35px;
+
+  text-align: center;
+
+  border: 1px solid rgba(248, 113, 113, 0.18);
+  border-radius: 20px;
+
+  background: rgba(127, 29, 29, 0.15);
+
+  backdrop-filter: blur(15px);
+}
+
+.alerts-error-icon {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 15px;
+
+  border-radius: 15px;
+
+  color: #fb7185;
+  background: rgba(244, 63, 94, 0.12);
+}
+
+.alerts-error h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.alerts-error p {
+  margin: 8px 0 20px;
+  color: rgba(203, 213, 225, 0.7);
+  font-size: 13px;
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.alerts-primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #6366f1;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.alerts-primary-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.alerts-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 18px;
+  padding: 17px 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+
+  background: rgba(15, 23, 42, 0.25);
+}
+
+.alerts-footer > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alerts-footer > div > svg {
+  color: #34d399;
+}
+
+.alerts-footer strong {
+  display: block;
+
+  color: #e2e8f0;
+  font-size: 11px;
+}
+
+.alerts-footer span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: rgba(100, 116, 139, 0.85);
+  font-size: 9px;
+}
+
+.alerts-footer > span {
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.09);
+
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.alerts-loading {
+  padding-top: 20px;
+}
+
+.alerts-skeleton {
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.045)
+    );
+
+  background-size: 200% 100%;
+
+  animation: skeletonLoading 1.4s infinite;
+}
+
+.alerts-skeleton-small {
+  width: 150px;
+  height: 12px;
+  margin-bottom: 15px;
+}
+
+.alerts-skeleton-title {
+  width: 360px;
+  max-width: 80%;
+  height: 45px;
+}
+
+.alerts-skeleton-text {
+  width: 550px;
+  max-width: 90%;
+  height: 15px;
+  margin-top: 13px;
+}
+
+.alerts-skeleton-card {
+  height: 145px;
+}
+
+.alerts-skeleton-large {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+}
+
+.alerts-summary-grid .alerts-skeleton-card {
+  border-radius: 18px;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes alertPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes criticalIconPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(244, 63, 94, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(244, 63, 94, 0.22);
+  }
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.alerts-spin {
+  animation: alertsSpin 0.8s linear infinite;
+}
+
+@keyframes alertsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .alerts-page {
+    padding: 30px 18px 55px;
+  }
+
+  .alerts-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alerts-header {
+    align-items: flex-start;
+  }
+
+  .alert-item {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .alert-item-status {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .alerts-page {
+    padding: 24px 12px 45px;
+  }
+
+  .alerts-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .alerts-header h1 {
+    font-size: 32px;
+  }
+
+  .alerts-header p {
+    font-size: 13px;
+  }
+
+  .alerts-refresh-button {
+    width: 100%;
+  }
+
+  .alerts-system-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .alerts-system-time {
+    padding-left: 55px;
+  }
+
+  .alerts-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alert-summary-card {
+    min-height: 125px;
+  }
+
+  .alerts-panel-header {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px 16px;
+  }
+
+  .alerts-count {
+    white-space: nowrap;
+  }
+
+  .alerts-filters {
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 10px 12px;
+  }
+
+  .alerts-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .alerts-filters button {
+    flex-shrink: 0;
+  }
+
+  .alert-item {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 11px;
+    padding: 17px 14px;
+  }
+
+  .alert-item:hover {
+    padding-left: 17px;
+  }
+
+  .alert-item-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .alert-item-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .alert-item-description {
+    font-size: 11px;
+  }
+
+  .alert-item-meta {
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .alert-item-status {
+    padding-top: 2px;
+  }
+
+  .alerts-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 13px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .alerts-page {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .alerts-header h1 {
+    font-size: 28px;
+  }
+
+  .alert-summary-card > strong {
+    font-size: 30px;
+  }
+
+  .alerts-panel-header h2 {
+    font-size: 18px;
+  }
+}
+
+/* =========================================================
+   CITYPULSE — SECURITY BUZZER / CRITICAL ALERT BANNER
+   ========================================================= */
+
+/*
+  SecurityAlarm currently uses Tailwind utility classes.
+  These overrides make the alarm look like a proper
+  command-center security notification even if some
+  Tailwind
+  utilities are not being applied.
+*/
+
+.security-alarm-banner {
+  position: fixed;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  width: min(920px, calc(100vw - 32px));
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px 18px;
+
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(127, 29, 29, 0.97),
+      rgba(88, 28, 28, 0.94)
+    );
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.38),
+    0 0 35px rgba(239, 68, 68, 0.22);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  color: #ffffff;
+
+  animation:
+    securityAlarmSlide 0.35s ease-out,
+    securityAlarmGlow 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CRITICAL VARIANT
+   ========================================================= */
+
+.security-alarm-banner.critical {
+  border-color: rgba(248, 113, 113, 0.6);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(127, 29, 29, 0.98),
+      rgba(69, 10, 10, 0.96)
+    );
+}
+
+
+/* =========================================================
+   HIGH VARIANT
+   ========================================================= */
+
+.security-alarm-banner.high {
+  border-color: rgba(251, 146, 60, 0.55);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 45, 18, 0.97),
+      rgba(67, 20, 7, 0.95)
+    );
+}
+
+
+/* =========================================================
+   ALARM ICON
+   ========================================================= */
+
+.security-alarm-icon {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  color: #fca5a5;
+
+  background: rgba(239, 68, 68, 0.16);
+
+  border: 1px solid rgba(248, 113, 113, 0.25);
+
+  box-shadow:
+    inset 0 0 18px rgba(248, 113, 113, 0.08),
+    0 0 18px rgba(239, 68, 68, 0.12);
+
+  animation: securityIconPulse 1.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ALARM CONTENT
+   ========================================================= */
+
+.security-alarm-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.security-alarm-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 850;
+
+  letter-spacing: -0.01em;
+}
+
+.security-alarm-title span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  color: #fecaca;
+
+  background: rgba(239, 68, 68, 0.18);
+
+  border: 1px solid rgba(248, 113, 113, 0.25);
+
+  font-size: 9px;
+  font-weight: 850;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.security-alarm-message {
+  margin: 5px 0 0;
+
+  color: rgba(254, 226, 226, 0.78);
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTIVE INCIDENT COUNT
+   ========================================================= */
+
+.security-alarm-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 7px;
+
+  color: #fca5a5;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.security-alarm-count::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #fb7185;
+
+  box-shadow:
+    0 0 8px rgba(251, 113, 133, 0.9);
+
+  animation: alertPulse 1s infinite;
+}
+
+
+/* =========================================================
+   ALARM CONTROLS
+   ========================================================= */
+
+.security-alarm-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BUZZER BUTTON
+   ========================================================= */
+
+.security-alarm-buzzer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 36px;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.09);
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.security-alarm-buzzer:hover {
+  transform: translateY(-1px);
+
+  background: rgba(255, 255, 255, 0.16);
+
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.security-alarm-buzzer:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================================
+   VIEW ALERTS BUTTON
+   ========================================================= */
+
+.security-alarm-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 36px;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.security-alarm-view:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   MUTE / CLOSE BUTTON
+   ========================================================= */
+
+.security-alarm-icon-button {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: rgba(255, 255, 255, 0.75);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.security-alarm-icon-button:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   CRITICAL FLASH LINE
+   ========================================================= */
+
+.security-alarm-banner::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 3px;
+
+  border-radius: 16px 0 0 16px;
+
+  background: #fb7185;
+
+  box-shadow:
+    0 0 14px rgba(251, 113, 133, 0.9);
+
+  animation: securityAlarmLine 1s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes securityAlarmSlide {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes securityAlarmGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 20px 55px rgba(0, 0, 0, 0.38),
+      0 0 25px rgba(239, 68, 68, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 20px 55px rgba(0, 0, 0, 0.38),
+      0 0 40px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@keyframes securityIconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      inset 0 0 18px rgba(248, 113, 113, 0.08),
+      0 0 12px rgba(239, 68, 68, 0.12);
+  }
+
+  50% {
+    transform: scale(1.06);
+    box-shadow:
+      inset 0 0 20px rgba(248, 113, 113, 0.14),
+      0 0 24px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@keyframes securityAlarmLine {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .security-alarm-banner {
+    top: 76px;
+
+    width: calc(100vw - 20px);
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    gap: 11px;
+
+    align-items: flex-start;
+  }
+
+  .security-alarm-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
+  }
+
+  .security-alarm-title {
+    font-size: 13px;
+  }
+
+  .security-alarm-message {
+    font-size: 11px;
+  }
+
+  .security-alarm-controls {
+    gap: 5px;
+  }
+
+  .security-alarm-buzzer {
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .security-alarm-view {
+    display: none;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .security-alarm-banner {
+    width: calc(100vw - 14px);
+    padding: 11px;
+  }
+
+  .security-alarm-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .security-alarm-title {
+    font-size: 12px;
+  }
+
+  .security-alarm-message {
+    font-size: 10px;
+  }
+
+  .security-alarm-controls {
+    flex-direction: column;
+  }
+
+  .security-alarm-buzzer {
+    width: 34px;
+    height: 34px;
+    min-height: 34px;
+
+    padding: 0;
+  }
+
+  .security-alarm-buzzer span {
+    display: none;
+  }
+}
